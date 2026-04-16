@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beopardy</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            <img src="assets/title.png" alt="Beopardy Logo" class="logo">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="board.html">Play</a>
+                <a href="leaderboard.html">About</a>
+                <a href="logout.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+    <main class="login-container">
+        <div class="setup-box">
+            <img src="assets/title.png" alt="Beopardy Logo" class="main-image">
+            <div id="setup-step-1">
+                <input type="number" id="playerCount" min="1" max="4" placeholder="Number of players" class="input-field">
+                <button type="button" class="btn-primary" onclick="generateNameFields()">Next</button>
+            </div>
+            <form action="board.php" method="POST" id="setup-step-2">
+                <div id="name-fields-container">
+                </div>
+                <button type="submit" class="btn-start">Start Game</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
