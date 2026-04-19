@@ -101,11 +101,10 @@ function openQuestion(category, value) {
     document.getElementById('modal-category').textContent = `CATEGORY: ${category.toUpperCase()}`;
     document.getElementById('modal-value').textContent = `FOR $${value}`;
     document.getElementById('modal-question').textContent = data.q;
-    document.getElementById('question-modal').style.display = 'flex';
+    modal.classList.add('active');
     document.getElementById('reveal-btn').style.display = 'flex';
     document.getElementById('correct-btn').style.display = 'none';
     document.getElementById('incorrect-btn').style.display = 'none';
-    updateActivePlayerUI();
 };
 
 function checkAnswer() {
@@ -120,8 +119,13 @@ function checkAnswer() {
 };
 
 function closeModal() {
-    document.getElementById('question-modal').style.display = 'none';
-    updateActivePlayerUI();
+    const modal = document.getElementById('question-modal');
+    modal.classList.remove('active');
+    setTimeout(() => {
+        document.getElementById('reveal-btn').style.display = 'flex';
+        document.getElementById('correct-btn').style.display = 'none';
+        document.getElementById('incorrect-btn').style.display = 'none';
+    }, 400);
 };
 
 function updateScore(isCorrect) {
@@ -135,8 +139,9 @@ function updateScore(isCorrect) {
         currentScore -= value;
         localStorage.setItem(`score_player_${currentPlayer}`, currentScore);
         currentPlayer = (currentPlayer + 1) % players.length;
-    }''
+    }
     displayScoreboard();
+    updateActivePlayerUI();
     closeModal();
 }
 
@@ -144,10 +149,12 @@ function updateActivePlayerUI() {
     document.querySelectorAll('.player-card').forEach(card => {
         card.classList.remove('active-player');
     });
-    const activeCard = document.getElementById(`player-${currentPlayer}`);
-    if (activeCard) {
-        activeCard.classList.add('active-player');
-    };
+    setTimeout(() => {
+        const activeCard = document.getElementById(`player-${currentPlayer}`);
+        if (activeCard) {
+            activeCard.classList.add('active-player');
+        }
+    }, 10);
 };
 
 function checkIfGameOver() {

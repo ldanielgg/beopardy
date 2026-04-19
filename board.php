@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beopardy</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts/board.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -64,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script>
         const players = <?php echo json_encode($_SESSION['player_names']); ?>;
     </script>
+    <script src="scripts/board.js" defer></script>
 </body>
 
 </html>

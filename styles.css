@@ -238,6 +238,7 @@ header {
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.05);
     font-family: var(--font-family-body);
     z-index: 1001;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .player-score {
@@ -262,7 +263,6 @@ header {
 }
 
 .modal-overlay {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -272,9 +272,14 @@ header {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 1000;
+    display: flex;
     justify-content: center; 
     align-items: flex-start; 
     padding-top: 10vh;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
 }
 
 .modal-content {
@@ -285,6 +290,18 @@ header {
     width: 90%;
     text-align: center;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px) scale(0.9);
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0) scale(1);
 }
 
 .modal-actions {
@@ -318,11 +335,11 @@ header {
 }
 
 .player-card.active-player {
-    transform: translateY(-5px);
-    transition: all 0.3s ease;
+    transform: translateY(-5px) scale(1.05);
 }
 
 .player-card:not(.active-player) {
     opacity: 0.3;
     filter: grayscale(30%);
+    transform: translateY(0) scale(0.95);
 }
