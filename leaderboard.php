@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'config/config.php';
 
 if (!isset($_SESSION['player_names']) || !isset($_SESSION['scores'])) {
@@ -15,7 +16,7 @@ foreach ($_SESSION['player_names'] as $index => $name) {
 }
 
 usort($leaderboard, function($a, $b) {
-    return $a['score'] <=> $b['score'];
+    return $b['score'] <=> $a['score'];
 });
 
 $winner = $leaderboard[0];
