@@ -23,5 +23,10 @@ if ($isCorrect) {
 $_SESSION['used_questions'][$_SESSION['current_id']] = true;
 unset($_SESSION['current_question']);
 unset($_SESSION['current_id']);
+if (count($_SESSION['used_questions']) >= 25) {
+     header("Location: leaderboard.php");
+     exit();
+}
 header("Location: board.php");
 exit();
+?>

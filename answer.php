@@ -28,8 +28,7 @@ if (!isset($_SESSION['current_question']) || !isset($_SESSION['current_id'])) {
             <img src="assets/title.png" alt="Beopardy Logo" class="logo">
             <div class="links">
                 <a href="index.php">Lobby</a>
-                <a href="leaderboard.html">Leaderboard</a>
-                <a href="logout.php">Restart</a>
+                <a href="leaderboard.php">Leaderboard</a>
             </div>
         </nav>
     </header>
