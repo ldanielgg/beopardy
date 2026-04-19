@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_SESSION['player_names'])) {
+    header('Location: board.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,9 +28,9 @@
         <nav class="nav-bar">
             <img src="assets/title.png" alt="Beopardy Logo" class="logo">
             <div class="links">
-                <a href="index.html" class="active-nav">Lobby</a>
+                <a href="index.php" class="active-nav">Lobby</a>
                 <a href="leaderboard.html">Leaderboard</a>
-                <a href="logout.html">Logout</a>
+                <a href="logout.php">Logout</a>
             </div>
         </nav>
     </header>
@@ -44,3 +53,5 @@
 </body>
 
 </html>
+
+<!-- You have an active game, continue? toast -->
