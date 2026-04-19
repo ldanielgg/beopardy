@@ -7,6 +7,11 @@
     <title>Beopardy</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -14,10 +19,9 @@
         <nav class="nav-bar">
             <img src="assets/title.png" alt="Beopardy Logo" class="logo">
             <div class="links">
-                <a href="index.html">Home</a>
-                <a href="board.html">Play</a>
-                <a href="leaderboard.html">About</a>
-                <a href="logout.html">Contact</a>
+                <a href="index.html" class="active-nav">Lobby</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="logout.html">Logout</a>
             </div>
         </nav>
     </header>
@@ -25,7 +29,9 @@
         <div class="setup-box">
             <img src="assets/title.png" alt="Beopardy Logo" class="main-image">
             <div id="setup-step-1">
-                <input type="number" id="playerCount" min="1" max="4" placeholder="Number of players" class="input-field">
+                <h3 class="input-label">Enter Number of Players</h3>
+                <input type="number" id="playerCount" min="1" max="4" placeholder="1 - 4 players"
+                    class="input-field" required>
                 <button type="button" class="btn-primary" onclick="generateNameFields()">Next</button>
             </div>
             <form action="board.php" method="POST" id="setup-step-2">
