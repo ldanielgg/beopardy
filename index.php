@@ -15,7 +15,7 @@ if (isset($_SESSION['player_names'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beopardy</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <script src="scripts/index.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -30,7 +30,7 @@ if (isset($_SESSION['player_names'])) {
             <div class="links">
                 <a href="index.php" class="active-nav">Lobby</a>
                 <a href="leaderboard.html">Leaderboard</a>
-                <a href="logout.php">Logout</a>
+                <a href="logout.php">Restart</a>
             </div>
         </nav>
     </header>

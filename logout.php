@@ -1,8 +1,3 @@
-<?php
-session_start();
-session_destroy();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +33,7 @@ session_destroy();
             echo "<h2>You dont have an active session currently.</h2>";
         }
         ?>
+        <p>add thing to confirm deletion of sessions data</p>
     </main>
 </body>
 

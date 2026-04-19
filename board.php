@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beopardy</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <script src="scripts/board.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -39,15 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="links">
                 <a href="index.php" class="active-nav">Lobby</a>
                 <a href="leaderboard.html">Leaderboard</a>
-                <a href="logout.php">Logout</a>
+                <a href="logout.php">Restart</a>
             </div>
         </nav>
     </header>
     <main class="game-container">
-        <h1>Welcome to Beopardy!</h1>
-        <p>Player Names: <?php echo implode(", ", $_SESSION['player_names']); ?></p>
-        <p>Player Scores: <?php echo implode(", ", $_SESSION['scores']); ?></p>
+        <div class="game-board">
+            <h2>Game Board</h2>
+        </div>
+        <div class="scoreboard" id="scoreboard">
+        </div> 
     </main>
+    <script>
+        const players = <?php echo json_encode($_SESSION['player_names']); ?>;
+    </script>
 </body>
 
 </html>
