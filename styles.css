@@ -83,7 +83,7 @@ header {
 .main-image {
     height: 120px;
     display: block;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 .setup-box {
@@ -272,7 +272,8 @@ form {
     text-overflow: ellipsis;
 }
 
-.question-container {
+.question-container, 
+.leaderboard-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -315,11 +316,12 @@ form {
     justify-content: center;
 }
 
-.question-category {
+.question-category,
+.leaderboard-header {
     font-size: clamp(1.2rem, 1.5vw, 1.5rem);
     font-family: var(--font-family-body);
     font-weight: 800;
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .question-value {
@@ -375,23 +377,85 @@ form {
 }
 
 .game-layout-wrapper {
-    position: relative; /* Becomes the anchor for the scoreboard */
+    position: relative;
     display: flex;
-    justify-content: center; /* Centers the question-container horizontally */
-    align-items: center;     /* Centers the question-container vertically */
+    justify-content: center;
+    align-items: center;
     min-height: 80vh;
     padding: 20px;
 }
 
 .scoreboard-sidebar {
-    position: absolute; /* Pulls it out of the layout flow */
-    left: 50px;         /* Set your 'X' pixels distance from the left edge */
+    position: absolute;
+    left: 50px;
     width: 250px;
-    /* Remove top/left offsets from your previous code to avoid conflicts */
 }
 
 .game-layout-wrapper .scoreboard {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Spacing between player cards */
+    gap: 15px;
+}
+
+.leaderboard-content {
+    background-color: white;
+    aspect-ratio: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    transform: translateY(20px) scale(0.9);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    min-height: 350px;
+}
+
+.winner-section {
+    margin-bottom: 30px;
+}
+
+.winner-section h2 {
+    font-family: var(--font-family-headline);
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.winner-section p {
+    font-family: var(--font-family-body);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.leaderboard-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-family-body);
+}
+
+.leaderboard-content tr {
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.leaderboard-content th {
+    padding: 12px;
+    text-align: left;
+}
+
+.leaderboard-content tr {
+    border-bottom: 1px solid #eee;
+}
+
+.leaderboard-content td {
+    padding: 15px;
+    text-align: left;
+    color: var(--text-color);
 }

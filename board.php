@@ -34,8 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['player_names'])) {
             <img src="assets/title.png" alt="Beopardy Logo" class="logo">
             <div class="links">
                 <a href="index.php" class="active-nav">Lobby</a>
-                <a href="leaderboard.html">Leaderboard</a>
-                <a href="logout.php">Restart</a>
+                <a href="leaderboard.php">Leaderboard</a>
             </div>
         </nav>
     </header>
