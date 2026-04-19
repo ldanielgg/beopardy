@@ -39,7 +39,7 @@ if (isset($_SESSION['player_names'])) {
             <img src="assets/title.png" alt="Beopardy Logo" class="main-image">
             <div id="setup-step-1">
                 <h3 class="input-label">Enter Number of Players</h3>
-                <input type="number" id="playerCount" min="1" max="4" placeholder="1 - 4 players"
+                <input type="number" id="playerCount" min="2" max="4" placeholder="2 - 4 players"
                     class="input-field" required>
                 <button type="button" class="btn-primary" onclick="generateNameFields()">Next</button>
             </div>
