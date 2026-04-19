@@ -1,3 +1,8 @@
+<?php
+session_start();
+session_destroy();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beopardy</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <script src="scripts/reset.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -21,7 +26,7 @@
             <div class="links">
                 <a href="index.php">Lobby</a>
                 <a href="leaderboard.html">Leaderboard</a>
-                <a href="logout.php" class="active-nav">Logout</a>
+                <a href="logout.php" class="active-nav">Restart</a>
             </div>
         </nav>
     </header>

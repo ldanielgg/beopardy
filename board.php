@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['scores'] = array_fill(0, $_SESSION['player_count'], 0);
         $_SESSION['current_player'] = 0;
     }
-    
+
     if (!isset($_SESSION['player_names'])) {
         header('Location: index.php');
         exit();
@@ -44,12 +44,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </nav>
     </header>
     <main class="game-container">
-        <div class="game-board">
-            <h2>Game Board</h2>
+        <div class="game-board" id="game-board">
         </div>
         <div class="scoreboard" id="scoreboard">
         </div> 
     </main>
+    <div id="question-modal" class="modal-overlay">
+        <div class="modal-content">
+            <p id="modal-category" class="modal-category"></p>
+            <p id="modal-value" class="modal-value"></p>
+            <p id="modal-question" class="modal-question"></p>
+            <div class="modal-actions">
+                <button onclick="updateScore(true)" id="correct-btn" class="btn-primary">Correct</button>
+                <button onclick="updateScore(false)" id="incorrect-btn" class="btn-primary">Incorrect</button>
+                <button onclick="checkAnswer()" id="reveal-btn" class="btn-primary">Show Answer</button>
+            </div>
+        </div>
+    </div>
     <script>
         const players = <?php echo json_encode($_SESSION['player_names']); ?>;
     </script>
