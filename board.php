@@ -1,18 +1,15 @@
 <?php
 session_start();
+require 'config/config.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['player_names'])) {
-        $_SESSION['player_names'] = $_POST['player_names'];
-        $_SESSION['player_count'] = count($_POST['player_names']);
-        $_SESSION['scores'] = array_fill(0, $_SESSION['player_count'], 0);
-        $_SESSION['current_player'] = 0;
-    }
-
-    if (!isset($_SESSION['player_names'])) {
-        header('Location: index.php');
-        exit();
-    }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['player_names'])) {
+    $_SESSION['player_names'] = $_POST['player_names'];
+    $_SESSION['scores'] = array_fill(0, count($_SESSION['player_names']), 0);
+    $_SESSION['current_player'] = 0;
+    $_SESSION['used_questions'] = [];
+} else if (!isset($_SESSION['player_names'])) {
+    header('Location: index.php');
+    exit();
 }
 ?>
 
@@ -43,27 +40,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </nav>
     </header>
     <main class="game-container">
-        <div class="game-board" id="game-board">
+        <div class="game-board">
+            <?php foreach ($categories as $cat): ?>
+                <div class="category-header"><?= strtoupper($cat) ?></div>
+            <?php endforeach; ?>
+            <?php foreach ($cardValues as $value): ?>
+                <?php foreach ($categories as $cat): ?>
+                    <?php $id = "$cat-$value"; ?>
+                    <?php if (isset($_SESSION['used_questions'][$id])): ?>
+                        <div class="game-card used">---</div>
+                    <?php else: ?>
+                        <form method="POST" action="question.php">
+                            <input type="hidden" name="category" value="<?= $cat ?>">
+                            <input type="hidden" name="value" value="<?= $value ?>">
+                            <input type="hidden" name="card_id" value="<?= $id ?>">
+                            <button type="submit" class="game-card">$<?= $value ?></button>
+                        </form>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
         </div>
         <div class="scoreboard" id="scoreboard">
-        </div> 
-    </main>
-    <div id="question-modal" class="modal-overlay">
-        <div class="modal-content">
-            <p id="modal-category" class="modal-category"></p>
-            <p id="modal-value" class="modal-value"></p>
-            <p id="modal-question" class="modal-question"></p>
-            <div class="modal-actions">
-                <button onclick="updateScore(true)" id="correct-btn" class="btn-primary">Correct</button>
-                <button onclick="updateScore(false)" id="incorrect-btn" class="btn-primary">Incorrect</button>
-                <button onclick="checkAnswer()" id="reveal-btn" class="btn-primary">Show Answer</button>
-            </div>
+            <?php foreach ($_SESSION['player_names'] as $index => $name): ?>
+                <?php 
+                    $isActive = ($_SESSION['current_player'] == $index) ? 'active-player' : ''; 
+                ?>
+                <div class="player-card <?= $isActive ?>">
+                    <div class="player-info">
+                        <div class="player-number">PLAYER <?= $index + 1 ?></div>
+                        <div class="player-name"><?= htmlspecialchars($name) ?></div>
+                    </div>
+                    <div class="player-score">$<?= number_format($_SESSION['scores'][$index]) ?></div>
+                </div>
+            <?php endforeach; ?>
         </div>
-    </div>
-    <script>
-        const players = <?php echo json_encode($_SESSION['player_names']); ?>;
-    </script>
-    <script src="scripts/board.js" defer></script>
+    </main>
 </body>
 
 </html>

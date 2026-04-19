@@ -10,8 +10,8 @@ function generateNameFields() {
     const count = document.getElementById('playerCount').value;
     const container = document.getElementById('name-fields-container');
     const step2 = document.getElementById('setup-step-2');
-    if (count < 1 || count > 4) {
-        alert("Please select between 1 and 4 players.");
+    if (count < 2 || count > 4) {
+        alert("Please select between 2 and 4 players.");
         return;
     };
     container.innerHTML = `<h3 class="input-label">Enter Player Names</h3>`;
