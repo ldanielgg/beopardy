@@ -95,7 +95,7 @@ header {
     align-items: center;
 }
 
-#name-fields-container {
+.name-fields-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -142,14 +142,8 @@ header {
     font-size: 26px;
 }
 
-#setup-step-1 {
+.setup-step {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#setup-step-2 {
-    display: none;
     flex-direction: column;
     align-items: center;
 }

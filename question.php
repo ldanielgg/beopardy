@@ -80,7 +80,6 @@ $_SESSION['current_question'] = [
             </div>
         </main>
     </div>
-    <script src="scripts/board.js" defer></script>
 </body>
 
 </html>
