@@ -11,12 +11,21 @@ $category = $_POST['category'];
 $value = (int)$_POST['value'];
 $_SESSION['current_id'] = $_POST['card_id'];
 
-$_SESSION['current_question'] = [
+if ($_SESSION['streak'] >= 3) {
+    $_SESSION['current_question'] = [
+    'category' => $category,
+    'value' => $value,
+    'question' => $gameDataHard[$category][$value]['q'],
+    'answer' => $gameDataHard[$category][$value]['a']
+];
+} else {
+    $_SESSION['current_question'] = [
     'category' => $category,
     'value' => $value,
     'question' => $gameData[$category][$value]['q'],
     'answer' => $gameData[$category][$value]['a']
 ];
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +44,11 @@ $_SESSION['current_question'] = [
 </head>
 
 <body>
+    <div class="ai-mode-indicator">
+        <span>Player: <?= $_SESSION['current_player'] + 1 ?></span>
+        <span>Streak: <?= isset($_SESSION['streak']) ? $_SESSION['streak'] : 0 ?></span>
+        <span class="badge" style="background: <?= $badgeColor ?>;">MODE: <?= $deckName ?></span>
+    </div>
     <header>
         <nav class="nav-bar">
             <img src="assets/title.png" alt="Beopardy Logo" class="logo">

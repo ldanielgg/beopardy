@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'config/config.php';
 if (!isset($_SESSION['current_question']) || !isset($_SESSION['current_id'])) {
     header('Location: board.php');
     exit();
@@ -22,6 +23,11 @@ if (!isset($_SESSION['current_question']) || !isset($_SESSION['current_id'])) {
 </head>
 
 <body>
+    <div class="ai-mode-indicator">
+        <span>Player: <?= $_SESSION['current_player'] + 1 ?></span>
+        <span>Streak: <?= isset($_SESSION['streak']) ? $_SESSION['streak'] : 0 ?></span>
+        <span class="badge" style="background: <?= $badgeColor ?>;">MODE: <?= $deckName ?></span>
+    </div>
     <header>
         <nav class="nav-bar">
             <img src="assets/title.png" alt="Beopardy Logo" class="logo">

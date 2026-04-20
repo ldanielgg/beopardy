@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['player_names'])) {
     $_SESSION['scores'] = array_fill(0, count($_SESSION['player_names']), 0);
     $_SESSION['current_player'] = 0;
     $_SESSION['used_questions'] = [];
+    $_SESSION['streak'] = 0;
 } else if (!isset($_SESSION['player_names'])) {
     header('Location: index.php');
     exit();
@@ -29,6 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['player_names'])) {
 </head>
 
 <body>
+    <div class="ai-mode-indicator">
+        <span>Player: <?= $_SESSION['current_player'] + 1 ?></span>
+        <span>Streak: <?= isset($_SESSION['streak']) ? $_SESSION['streak'] : 0 ?></span>
+        <span class="badge" style="background: <?= $badgeColor ?>;">MODE: <?= $deckName ?></span>
+    </div>
     <header>
         <nav class="nav-bar">
             <img src="assets/title.png" alt="Beopardy Logo" class="logo">

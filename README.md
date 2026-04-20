@@ -1,6 +1,6 @@
 # Beopardy
 
-A web-based Jeopardy-style trivia game built with PHP, JavaScript, and CSS. This project allows users to play through categories of questions with a functional scoreboard and real-time session management.
+A web-based Jeopardy-style trivia game built with PHP and CSS. This project allows users to play through categories of questions with a functional scoreboard and real-time session management.
 
 ## Features
 
@@ -23,11 +23,6 @@ A web-based Jeopardy-style trivia game built with PHP, JavaScript, and CSS. This
 * **State Management:** PHP Sessions
 
 ## Setup Instructions
-
-### Prerequisites
-
-* A web server with PHP support (e.g., Apache via XAMPP, WAMP, or MAMP).
-* A modern web browser.
 
 ### Installation
 
